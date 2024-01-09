@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<HBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.jamhour.educationhub.controllers.LogInController">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0"
+                prefWidth="569.0">
+        <HBox alignment="CENTER" layoutX="58.0" layoutY="141.0" prefHeight="133.0" prefWidth="324.0" spacing="10.0">
+            <ImageView fitHeight="153.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../../../images/app_icon_light.jpeg"/>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="EducationHub" wrappingWidth="157.0">
+                <font>
+                    <Font size="24.0"/>
+                </font>
+            </Text>
+        </HBox>
+        <Text layoutX="78.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="A smart and simple way to learn." wrappingWidth="408.884765625">
+            <font>
+                <Font size="22.0"/>
+            </font>
+        </Text>
+        <Button contentDisplay="GRAPHIC_ONLY" layoutX="78.0" layoutY="403.0" mnemonicParsing="false"
+                onAction="#openInfoDialog" prefHeight="40.0" prefWidth="36.0">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <ImageView fitHeight="29.0" fitWidth="24.0" layoutX="84.0" layoutY="409.0">
+            <Image url="@../../../images/info.png"/>
+        </ImageView>
+    </AnchorPane>
+    <AnchorPane prefHeight="518.0" prefWidth="681.0">
+        <AnchorPane layoutX="76.0" layoutY="84.0" prefHeight="350.0" prefWidth="529.0">
+            <TextField fx:id="email" layoutX="15.0" layoutY="62.0" prefHeight="50.0" prefWidth="500.0"
+                       promptText="Email or phone number">
+                <cursor>
+                    <Cursor fx:constant="TEXT"/>
+                </cursor>
+            </TextField>
+            <Button defaultButton="true" layoutX="15.0" layoutY="186.0" mnemonicParsing="false" onAction="#logIn"
+                    prefHeight="50.0" prefWidth="500.0" text="Log in">
+                <font>
+                    <Font size="24.0"/>
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+            <Hyperlink layoutX="201.0" layoutY="257.0" onAction="#openInfoDialog" text="Forgot Password?">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Hyperlink>
+            <PasswordField layoutX="15.0" layoutY="125.0" prefHeight="50.0" prefWidth="500.0" promptText="Password"/>
+        </AnchorPane>
+    </AnchorPane>
+</HBox>
