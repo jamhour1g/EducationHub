@@ -1,0 +1,74 @@
+package com.jamhour.educationhub;
+
+import atlantafx.base.theme.Dracula;
+import atlantafx.base.theme.Theme;
+import com.jamhour.database.Database;
+import com.jamhour.educationhub.controllers.LogInController;
+import javafx.application.Application;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
+public final class App extends Application implements AutoCloseable {
+
+    private static final String APP_NAME = "EducationHub";
+
+    // TODO : Fix this to contain all the dependencies that it needs
+    private static final Database database = Database.getInstance();
+    private static final App app = new App();
+    private Stage stage;
+
+    @Getter
+    @Setter(AccessLevel.PRIVATE)
+    private Window window;
+
+    public static App getInstance() {
+        return app;
+    }
+
+    @Override
+    public void close() throws Exception {
+        database.close();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        close();
+    }
+
+    @Override
+    public void start(Stage stage) {
+        this.stage = stage;
+
+        setTheme(new Dracula());
+        setSceneAndShow(new LogInController().loadContents());
+    }
+
+    public void setSceneAndShow(Parent content) {
+
+        var scene = new Scene(content);
+
+        setWindow(scene.getWindow());
+        stage.setScene(scene);
+        stage.setTitle(APP_NAME);
+        stage.show();
+    }
+
+
+    public static void launch() {
+        Application.launch();
+    }
+
+    public static String getAppName() {
+        return APP_NAME;
+    }
+
+    public static void setTheme(Theme theme) {
+        Application.setUserAgentStylesheet(theme.getUserAgentStylesheet());
+    }
+
+}
