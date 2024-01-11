@@ -23,4 +23,8 @@ public interface Controller<T> {
             throw new RuntimeException(e);
         }
     }
+
+    default boolean isResizable() {
+        return true;
+    }
 }
