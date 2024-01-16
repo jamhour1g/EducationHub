@@ -1,10 +1,8 @@
 package com.jamhour.educationhub;
 
-import atlantafx.base.theme.Dracula;
 import atlantafx.base.theme.Theme;
 import com.jamhour.database.Database;
-import com.jamhour.educationhub.controllers.Controller;
-import com.jamhour.educationhub.controllers.LogInController;
+import com.jamhour.educationhub.controllers.ControllerResource;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,6 +32,7 @@ public final class App extends Application implements AutoCloseable {
     @Override
     public void close() throws Exception {
         database.close();
+        stage.close();
     }
 
     @Override
@@ -46,19 +45,17 @@ public final class App extends Application implements AutoCloseable {
         this.stage = stage;
         app.stage = stage;
 
-        Controller<LogInController> logInController = new LogInController();
-
-        setTheme(new Dracula());
-        setSceneAndShow(logInController.loadContents(), logInController.isResizable());
+        setTheme(Themes.DRACULA.getTheme());
+        setSceneAndShow(ControllerResource.LOGIN.getContent(), ControllerResource.LOGIN.isResizable());
     }
 
     public void setSceneAndShow(Parent content, boolean resizable) {
 
         var scene = new Scene(content);
-
-        setWindow(scene.getWindow());
-        stage.setResizable(resizable);
         stage.setScene(scene);
+
+        setWindow(stage.getOwner());
+        stage.setResizable(resizable);
         stage.centerOnScreen();
         stage.setTitle(APP_NAME);
         stage.show();
