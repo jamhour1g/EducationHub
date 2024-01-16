@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public enum Controller {
+public enum ControllerResource {
     LOGIN("src\\main\\resources\\com\\jamhour\\educationhub\\log-in.fxml", false),
     STUDENT_HOME("src\\main\\resources\\com\\jamhour\\educationhub\\student\\student-homeTab.fxml", true),
     STUDENT_COURSES("src\\main\\resources\\com\\jamhour\\educationhub\\student\\courses.fxml", true),
@@ -26,7 +26,7 @@ public enum Controller {
 
     private Parent content;
 
-    Controller(String path, boolean resizable) {
+    ControllerResource(String path, boolean resizable) {
         this.path = Paths.get(path);
         this.resizable = resizable;
     }
