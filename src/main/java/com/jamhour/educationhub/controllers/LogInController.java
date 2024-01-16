@@ -21,12 +21,11 @@ public class LogInController {
         switch (logInAs.getValue()) {
             case "Student" ->
                     App.getInstance().setSceneAndShow(ControllerResource.STUDENT_HOME.getContent(), ControllerResource.STUDENT_HOME.isResizable());
-//            case "Teacher" -> App.getInstance().setSceneAndShow(new TeacherHomeScreen().loadContents());
-//            case "Admin" -> App.getInstance().setSceneAndShow(new AdminHomeScreen().loadContents());
         }
     }
 
     public static LogInController getInstance() {
         return controller.getController();
     }
+
 }
