@@ -4,11 +4,9 @@ import com.jamhour.educationhub.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+public class LogInController {
 
-public class LogInController implements Controller<LogInController> {
-    private static final Path controllerPath = Paths.get("src\\main\\resources\\com\\jamhour\\educationhub\\log-in.fxml");
+    private static final ControllerResource controller = ControllerResource.LOGIN;
 
     @FXML
     private ComboBox<String> logInAs;
@@ -18,25 +16,17 @@ public class LogInController implements Controller<LogInController> {
         logInAs.getSelectionModel().selectFirst();
     }
 
-    @Override
-    public Path getControllerPath() {
-        return controllerPath;
-    }
-
-    @Override
-    public boolean isResizable() {
-        return false;
-    }
-
     @FXML
     public void logIn() {
         switch (logInAs.getValue()) {
-            case "Student" -> {
-                Controller<StudentHomeScreen> studentHomeScreen = new StudentHomeScreen();
-                App.getInstance().setSceneAndShow(studentHomeScreen.loadContents(), studentHomeScreen.isResizable());
-            }
+            case "Student" ->
+                    App.getInstance().setSceneAndShow(ControllerResource.STUDENT_HOME.getContent(), ControllerResource.STUDENT_HOME.isResizable());
 //            case "Teacher" -> App.getInstance().setSceneAndShow(new TeacherHomeScreen().loadContents());
 //            case "Admin" -> App.getInstance().setSceneAndShow(new AdminHomeScreen().loadContents());
         }
+    }
+
+    public static LogInController getInstance() {
+        return controller.getController();
     }
 }
