@@ -21,6 +21,8 @@ public class LogInController {
         switch (logInAs.getValue()) {
             case "Student" ->
                     App.getInstance().setSceneAndShow(ControllerResource.STUDENT_HOME.getContent(), ControllerResource.STUDENT_HOME.isResizable());
+            case "Admin" ->
+                    App.getInstance().setSceneAndShow(ControllerResource.ADMIN_HOME.getContent(), ControllerResource.ADMIN_HOME.isResizable());
         }
     }
 
