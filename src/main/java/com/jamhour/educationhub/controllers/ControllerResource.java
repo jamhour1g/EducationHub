@@ -11,11 +11,15 @@ import java.nio.file.Paths;
 
 public enum ControllerResource {
     LOGIN("src\\main\\resources\\com\\jamhour\\educationhub\\log-in.fxml", false),
-    STUDENT_HOME("src\\main\\resources\\com\\jamhour\\educationhub\\student\\student-homeTab.fxml", true),
-    STUDENT_COURSES("src\\main\\resources\\com\\jamhour\\educationhub\\student\\courses.fxml", true),
-    STUDENT_EXAMS("src\\main\\resources\\com\\jamhour\\educationhub\\student\\examsTab.fxml", true),
-    STUDENT_HOME_CENTER_PANE("src\\main\\resources\\com\\jamhour\\educationhub\\student\\student-home-centerBorderPane.fxml", true),
-    COURSES_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\student\\courseDialog.fxml", true);
+    STUDENT_HOME("src\\main\\resources\\com\\jamhour\\educationhub\\student\\student-homeTab.fxml"),
+    STUDENT_HOME_CENTER_PANE("src\\main\\resources\\com\\jamhour\\educationhub\\student\\student-home-centerBorderPane.fxml"),
+    STUDENT_COURSES("src\\main\\resources\\com\\jamhour\\educationhub\\student\\courses.fxml"),
+    STUDENT_EXAMS("src\\main\\resources\\com\\jamhour\\educationhub\\student\\examsTab.fxml"),
+    COURSES_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\student\\courseDialog.fxml"),
+    ADMIN_HOME("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\admin-home.fxml"),
+    ADMIN_STUDENT_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student-actions.fxml"),
+    ADMIN_TEACHER_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\teacher-actions.fxml"),
+    ADMIN_COURSE_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\course-actions.fxml");
 
     private final FXMLLoader fxmlLoader = new FXMLLoader();
 
@@ -29,6 +33,10 @@ public enum ControllerResource {
     ControllerResource(String path, boolean resizable) {
         this.path = Paths.get(path);
         this.resizable = resizable;
+    }
+
+    ControllerResource(String path) {
+        this(path, true);
     }
 
     @SneakyThrows(IOException.class)

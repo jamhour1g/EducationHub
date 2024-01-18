@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import atlantafx.base.controls.Tile?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Tile fx:id="SeachTile" description="Search for a student using their id,name,phone or email" minHeight="-Infinity" title="Search" />
+            <TableView fx:id="studentsTableView">
+               <columns>
+                  <TableColumn fx:id="studentIdColumn" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="ID" />
+                  <TableColumn fx:id="studentNameColumn" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Name" />
+                  <TableColumn fx:id="studentPhoneColumn" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Phone" />
+                  <TableColumn fx:id="studentEmailColumn" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Email" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <ToolBar BorderPane.alignment="CENTER">
+         <items>
+            <Button fx:id="addStudentButton" mnemonicParsing="false" text="Add a student">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="DeleteStudentButton" mnemonicParsing="false" text="Delete a student">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="UpdateStudentButton" mnemonicParsing="false" text="Update student info">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="RegisterStudentButton" mnemonicParsing="false" text="Register a student in course">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </items>
+      </ToolBar>
+   </top>
+</BorderPane>
