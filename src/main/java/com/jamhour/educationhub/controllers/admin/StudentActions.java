@@ -1,10 +1,10 @@
 package com.jamhour.educationhub.controllers.admin;
 
 import atlantafx.base.controls.Tile;
+import atlantafx.base.layout.InputGroup;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 public class StudentActions {
 
@@ -28,4 +28,29 @@ public class StudentActions {
     private Button updateStudent;
     @FXML
     private Button registerStudent;
+
+    @FXML
+    public void initialize() {
+        initSearchTile();
+    }
+
+    private void initSearchTile() {
+        InputGroup inputGroup = new InputGroup();
+        ComboBox<String> searchField = new ComboBox<>(
+                FXCollections.observableArrayList(
+                        "ID",
+                        "Name",
+                        "Phone",
+                        "Email"
+                )
+        );
+
+        searchField.getSelectionModel().selectFirst();
+        TextField textField = new TextField();
+        Button search = new Button("Search");
+
+        inputGroup.getChildren().addAll(searchField, textField, search);
+
+        searchTile.setAction(inputGroup);
+    }
 }
