@@ -3,25 +3,20 @@
 <?import atlantafx.base.controls.Tile?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<BorderPane fx:controller="com.jamhour.educationhub.controllers.admin.StudentActions"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jamhour.educationhub.controllers.admin.StudentActions">
     <center>
-        <VBox BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
             <children>
                 <Tile fx:id="searchTile" description="Search for a student using their id,name,phone or email"
                       minHeight="-Infinity" title="Search"/>
-                <TableView fx:id="tableView">
+                <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="idColumn" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0"
-                                     text="ID"/>
-                        <TableColumn fx:id="nameColumn" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0"
-                                     text="Name"/>
-                        <TableColumn fx:id="phoneColumn" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0"
-                                     text="Phone"/>
-                        <TableColumn fx:id="emailColumn" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0"
-                                     text="Email"/>
+                        <TableColumn fx:id="idColumn" text="ID"/>
+                        <TableColumn fx:id="nameColumn" text="Name"/>
+                        <TableColumn fx:id="phoneColumn" text="Phone"/>
+                        <TableColumn fx:id="emailColumn" text="Email"/>
                     </columns>
                 </TableView>
             </children>
