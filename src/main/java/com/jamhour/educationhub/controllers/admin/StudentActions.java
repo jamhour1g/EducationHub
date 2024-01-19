@@ -2,24 +2,31 @@ package com.jamhour.educationhub.controllers.admin;
 
 import atlantafx.base.controls.Tile;
 import atlantafx.base.layout.InputGroup;
+import com.jamhour.data.Student;
+import com.jamhour.database.Schema;
+import com.jamhour.database.queries.Queries;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import lombok.Getter;
 
 public class StudentActions {
 
     @FXML
     private Tile searchTile;
+
     @FXML
-    private TableView tableView;
+    private TableView<StudentTableEntry> tableView;
     @FXML
-    private TableColumn idColumn;
+    private TableColumn<StudentTableEntry, Integer> idColumn;
     @FXML
-    private TableColumn nameColumn;
+    private TableColumn<StudentTableEntry, String> nameColumn;
     @FXML
-    private TableColumn phoneColumn;
+    private TableColumn<StudentTableEntry, String> phoneColumn;
     @FXML
-    private TableColumn emailColumn;
+    private TableColumn<StudentTableEntry, String> emailColumn;
+
     @FXML
     private Button addStudent;
     @FXML
@@ -32,6 +39,18 @@ public class StudentActions {
     @FXML
     public void initialize() {
         initSearchTile();
+        initTable();
+    }
+
+    private void initTable() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
+
+        Queries.<Student>getAllInTable(Schema.Tables.STUDENT)
+                .forEach(student -> tableView.getItems().add(new StudentTableEntry(student)));
     }
 
     private void initSearchTile() {
@@ -52,5 +71,20 @@ public class StudentActions {
         inputGroup.getChildren().addAll(searchField, textField, search);
 
         searchTile.setAction(inputGroup);
+    }
+
+    @Getter
+    public static class StudentTableEntry {
+        private final int id;
+        private final String name;
+        private final String phone;
+        private final String email;
+
+        public StudentTableEntry(Student student) {
+            this.id = student.id();
+            this.name = student.name();
+            this.phone = student.phone();
+            this.email = student.email();
+        }
     }
 }
