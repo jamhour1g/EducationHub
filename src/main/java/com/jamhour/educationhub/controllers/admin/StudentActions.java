@@ -1,7 +1,11 @@
 package com.jamhour.educationhub.controllers.admin;
 
+import atlantafx.base.controls.Message;
+import atlantafx.base.controls.Popover;
 import atlantafx.base.controls.Tile;
 import atlantafx.base.layout.InputGroup;
+import atlantafx.base.theme.Styles;
+import atlantafx.base.util.Animations;
 import com.jamhour.data.Student;
 import com.jamhour.database.Schema;
 import com.jamhour.database.queries.Queries;
@@ -9,7 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lombok.Getter;
+import lombok.Data;
 
 public class StudentActions {
 
@@ -55,6 +59,7 @@ public class StudentActions {
 
     private void initSearchTile() {
         InputGroup inputGroup = new InputGroup();
+
         ComboBox<String> searchField = new ComboBox<>(
                 FXCollections.observableArrayList(
                         "ID",
@@ -63,17 +68,87 @@ public class StudentActions {
                         "Email"
                 )
         );
-
         searchField.getSelectionModel().selectFirst();
+
         TextField textField = new TextField();
+        textField.setPromptText("Enter a value.");
+        textField.textProperty().addListener(
+                (_, _, _) -> textField.pseudoClassStateChanged(Styles.STATE_DANGER, false)
+        );
+
         Button search = new Button("Search");
+        search.setOnAction(_ -> handleSearch(search, textField, searchField));
 
         inputGroup.getChildren().addAll(searchField, textField, search);
 
         searchTile.setAction(inputGroup);
     }
 
-    @Getter
+    private void handleSearch(Button search, TextField textField, ComboBox<String> searchField) {
+        Animations.pulse(search).playFromStart();
+
+        if (textField.getText() == null || textField.getText().isBlank()) {
+            showErrorOnInvalidSearchInput("Enter a value.", "Please enter the value you want to search for.", textField);
+            return;
+        }
+
+        switch (searchField.getValue()) {
+            case "ID" -> getStudentUsingId(textField);
+            case "Name" -> getStudentUsing(Student.Column.NAME, textField);
+            case "Phone" -> getStudentUsing(Student.Column.PHONE, textField);
+            case "Email" -> getStudentUsing(Student.Column.EMAIL, textField);
+        }
+
+    }
+
+    private void getStudentUsingId(TextField textField) {
+        int parsedId;
+        try {
+            parsedId = Integer.parseInt(textField.getText());
+        } catch (NumberFormatException e) {
+            showErrorOnInvalidSearchInput("Invalid ID.", "Please enter a valid ID.", textField);
+            return;
+        }
+
+        Queries.<Student>getFromTableUsing(Schema.Tables.STUDENT, Student.Column.ID, parsedId)
+                .ifPresentOrElse(
+                        student -> {
+                            StudentTableEntry studentTableEntry = new StudentTableEntry(student);
+                            tableView.getSelectionModel().select(studentTableEntry);
+                            tableView.scrollTo(studentTableEntry);
+                        },
+                        () -> showErrorOnInvalidSearchInput("No results found.", "", textField)
+                );
+    }
+
+    private void getStudentUsing(Student.Column column, TextField textField) {
+        Queries.<Student>getFromTableUsing(Schema.Tables.STUDENT, column, textField.getText())
+                .ifPresentOrElse(
+                        student -> {
+                            StudentTableEntry studentTableEntry = new StudentTableEntry(student);
+                            tableView.getSelectionModel().select(studentTableEntry);
+                            tableView.scrollTo(studentTableEntry);
+                        },
+                        () -> showErrorOnInvalidSearchInput("No results found.", "", textField)
+                );
+    }
+
+    private static void showErrorOnInvalidSearchInput(String title, String description, TextField textField) {
+
+        Message content = new Message(title, description);
+        content.getStyleClass().add(Styles.DANGER);
+        content.setPrefHeight(50);
+        content.setPrefWidth(500);
+
+        Popover popover = new Popover(content);
+        popover.setArrowLocation(Popover.ArrowLocation.TOP_CENTER);
+        popover.show(textField);
+
+        textField.pseudoClassStateChanged(Styles.STATE_DANGER, true);
+        Animations.flash(textField).playFromStart();
+    }
+
+    @Data
     public static class StudentTableEntry {
         private final int id;
         private final String name;
