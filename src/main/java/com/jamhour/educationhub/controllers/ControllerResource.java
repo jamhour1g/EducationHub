@@ -19,7 +19,8 @@ public enum ControllerResource {
     ADMIN_HOME("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\admin-home.fxml"),
     ADMIN_STUDENT_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student-actions.fxml"),
     ADMIN_TEACHER_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\teacher-actions.fxml"),
-    ADMIN_COURSE_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\course-actions.fxml");
+    ADMIN_COURSE_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\course-actions.fxml"),
+    ADMIN_ADD_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\addStudent-dialog.fxml");
 
     private final FXMLLoader fxmlLoader = new FXMLLoader();
 
