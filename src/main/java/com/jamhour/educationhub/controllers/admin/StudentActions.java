@@ -90,6 +90,11 @@ public class StudentActions {
         AddStudentDialog.showAddStudentDialog(addStudent.getScene().getWindow());
     }
 
+    @FXML
+    public void deleteStudent() {
+        DeleteStudentDialog.showDeleteStudentDialog(deleteStudent.getScene().getWindow());
+    }
+    
     private void handleSearch(Button search, TextField textField, ComboBox<String> searchField) {
         Animations.pulse(search).playFromStart();
 

@@ -30,7 +30,7 @@
                         <Cursor fx:constant="HAND"/>
                     </cursor>
                 </Button>
-                <Button fx:id="deleteStudent" mnemonicParsing="false" text="Delete a student">
+                <Button fx:id="deleteStudent" onAction="#deleteStudent" mnemonicParsing="false" text="Delete a student">
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>
