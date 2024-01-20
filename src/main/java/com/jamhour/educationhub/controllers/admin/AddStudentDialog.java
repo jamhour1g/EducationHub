@@ -1,5 +1,7 @@
 package com.jamhour.educationhub.controllers.admin;
 
+import atlantafx.base.controls.Message;
+import atlantafx.base.theme.Styles;
 import com.jamhour.data.Student;
 import com.jamhour.database.Schema;
 import com.jamhour.database.queries.Queries;
@@ -12,6 +14,8 @@ public class AddStudentDialog {
 
 
     @FXML
+    private Message message;
+    @FXML
     private TextField idTextField;
     @FXML
     private TextField nameTextField;
@@ -19,6 +23,10 @@ public class AddStudentDialog {
     private TextField phoneTextField;
     @FXML
     private TextField emailTextField;
+
+    public void initialize() {
+        message.getStyleClass().add(Styles.ACCENT);
+    }
 
     @FXML
     public void addStudent() {
