@@ -25,7 +25,7 @@
     <top>
         <ToolBar BorderPane.alignment="CENTER">
             <items>
-                <Button fx:id="addStudent" mnemonicParsing="false" text="Add a student">
+                <Button fx:id="addStudent" onAction="#addStudent" mnemonicParsing="false" text="Add a student">
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>
