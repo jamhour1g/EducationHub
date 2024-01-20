@@ -20,7 +20,9 @@ public enum ControllerResource {
     ADMIN_STUDENT_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student-actions.fxml"),
     ADMIN_TEACHER_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\teacher-actions.fxml"),
     ADMIN_COURSE_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\course-actions.fxml"),
-    ADMIN_ADD_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\addStudent-dialog.fxml");
+    ADMIN_ADD_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\addStudent-dialog.fxml"),
+    ADMIN_DELETE_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\deleteStudent-dialog.fxml");
+
 
     private final FXMLLoader fxmlLoader = new FXMLLoader();
 
