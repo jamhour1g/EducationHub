@@ -8,7 +8,10 @@ import com.jamhour.database.queries.Queries;
 import com.jamhour.educationhub.controllers.ControllerResource;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
+import javafx.stage.Window;
 
 public class AddStudentDialog {
 
@@ -24,12 +27,32 @@ public class AddStudentDialog {
     @FXML
     private TextField emailTextField;
 
+    @FXML
     public void initialize() {
         message.getStyleClass().add(Styles.ACCENT);
     }
 
+
     @FXML
-    public void addStudent() {
+    public static void showAddStudentDialog(Window owner) {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Add Student");
+        dialog.initOwner(owner);
+
+        dialog.getDialogPane().setContent(ControllerResource.ADMIN_ADD_STUDENT_DIALOG.getContent());
+        dialog.getDialogPane().getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
+
+        dialog.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == ButtonType.OK) {
+                AddStudentDialog controller = ControllerResource.ADMIN_ADD_STUDENT_DIALOG.getController();
+                controller.addStudent();
+            } else {
+                dialog.close();
+            }
+        });
+    }
+
+    private void addStudent() {
         int id;
         try {
             id = Integer.parseInt(idTextField.getText());
@@ -60,15 +83,21 @@ public class AddStudentDialog {
         Queries.insertIntoTable(Schema.Tables.STUDENT, student);
     }
 
-    private static void showErrorOnInvalidSearchInput(String title, String description) {
+    private void showErrorOnInvalidSearchInput(String title, String description) {
 
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(description);
-        alert.showAndWait();
+        alert.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        alert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == ButtonType.OK) {
+                AddStudentDialog.showAddStudentDialog(null);
+            } else {
+                alert.close();
+            }
+        });
 
-        ControllerResource.ADMIN_STUDENT_ACTIONS.<StudentActions>getController().addStudent();
     }
 
 }

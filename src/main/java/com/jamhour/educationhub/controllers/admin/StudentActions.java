@@ -9,7 +9,6 @@ import atlantafx.base.util.Animations;
 import com.jamhour.data.Student;
 import com.jamhour.database.Schema;
 import com.jamhour.database.queries.Queries;
-import com.jamhour.educationhub.controllers.ControllerResource;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -88,21 +87,8 @@ public class StudentActions {
 
     @FXML
     public void addStudent() {
-        Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.setTitle("Add Student");
-        dialog.initOwner(addStudent.getScene().getWindow());
-        dialog.getDialogPane().setContent(ControllerResource.ADMIN_ADD_STUDENT_DIALOG.getContent());
-        dialog.getDialogPane().getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
-        dialog.showAndWait().ifPresent(buttonType -> {
-            if (buttonType == ButtonType.OK) {
-                AddStudentDialog controller = ControllerResource.ADMIN_ADD_STUDENT_DIALOG.getController();
-                controller.addStudent();
-            } else {
-                dialog.close();
-            }
-        });
+        AddStudentDialog.showAddStudentDialog(addStudent.getScene().getWindow());
     }
-
 
     private void handleSearch(Button search, TextField textField, ComboBox<String> searchField) {
         Animations.pulse(search).playFromStart();
