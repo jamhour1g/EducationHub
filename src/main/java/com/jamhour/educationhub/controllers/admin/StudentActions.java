@@ -94,7 +94,13 @@ public class StudentActions {
     public void deleteStudent() {
         DeleteStudentDialog.showDeleteStudentDialog(deleteStudent.getScene().getWindow());
     }
-    
+
+    @FXML
+    public void updateStudent() {
+        // TODO : update the table view to adjust to the new student updates in DB
+        UpdateStudent.updateStudentInfoInDatabase(updateStudent.getScene().getWindow());
+    }
+
     private void handleSearch(Button search, TextField textField, ComboBox<String> searchField) {
         Animations.pulse(search).playFromStart();
 
