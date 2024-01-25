@@ -31,7 +31,7 @@
                         </TableView>
                         <HBox alignment="BOTTOM_RIGHT">
                             <children>
-                                <Button fx:id="registerStudentButton"
+                                <Button fx:id="registerStudentButton" onAction="#registerStudent"
                                         alignment="BOTTOM_RIGHT" defaultButton="true"
                                         mnemonicParsing="false" text="Register"/>
                             </children>
