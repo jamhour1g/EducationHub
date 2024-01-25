@@ -87,16 +87,19 @@ public class StudentActions {
 
     @FXML
     public void addStudent() {
+        Animations.pulse(addStudent).playFromStart();
         AddStudentDialog.showAddStudentDialog(addStudent.getScene().getWindow());
     }
 
     @FXML
     public void deleteStudent() {
+        Animations.pulse(deleteStudent).playFromStart();
         DeleteStudentDialog.showDeleteStudentDialog(deleteStudent.getScene().getWindow());
     }
 
     @FXML
     public void updateStudent() {
+        Animations.pulse(updateStudent).playFromStart();
         // TODO : update the table view to adjust to the new student updates in DB
         UpdateStudent.updateStudentInfoInDatabase(updateStudent.getScene().getWindow());
     }

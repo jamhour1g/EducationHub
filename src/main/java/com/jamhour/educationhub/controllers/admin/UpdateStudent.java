@@ -4,6 +4,7 @@ import atlantafx.base.controls.Message;
 import atlantafx.base.controls.Tile;
 import atlantafx.base.layout.InputGroup;
 import atlantafx.base.theme.Styles;
+import atlantafx.base.util.Animations;
 import com.jamhour.data.Student;
 import com.jamhour.database.Schema;
 import com.jamhour.database.queries.Queries;
@@ -71,6 +72,7 @@ public class UpdateStudent {
 
 
         search.setOnAction(_ -> {
+                    Animations.pulse(search).playFromStart();
                     int studentId;
                     try {
                         studentId = Integer.parseInt(studentIdTextField.getText());
