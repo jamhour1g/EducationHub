@@ -17,4 +17,6 @@ module com.jamhour.educationhub {
     opens com.jamhour.educationhub.controllers to javafx.fxml;
     opens com.jamhour.educationhub.controllers.student to javafx.fxml;
     opens com.jamhour.educationhub.controllers.admin to javafx.fxml;
+    exports com.jamhour.educationhub.controllers.admin.student_actions;
+    opens com.jamhour.educationhub.controllers.admin.student_actions to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package com.jamhour.educationhub.controllers.admin;
+package com.jamhour.educationhub.controllers.admin.student_actions;
 
 import atlantafx.base.controls.Message;
 import atlantafx.base.controls.Tile;

@@ -5,7 +5,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.jamhour.educationhub.controllers.admin.StudentActions">
+            fx:controller="com.jamhour.educationhub.controllers.admin.student_actions.StudentActions">
     <center>
         <VBox alignment="CENTER" BorderPane.alignment="CENTER">
             <children>
