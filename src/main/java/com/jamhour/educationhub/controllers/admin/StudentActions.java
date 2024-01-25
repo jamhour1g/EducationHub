@@ -101,6 +101,12 @@ public class StudentActions {
         UpdateStudent.updateStudentInfoInDatabase(updateStudent.getScene().getWindow());
     }
 
+    @FXML
+    public void registerStudent() {
+        Animations.pulse(registerStudent).playFromStart();
+        RegisterStudentDialog.showRegisterStudentDialog(registerStudent.getScene().getWindow());
+    }
+
     private void handleSearch(Button search, TextField textField, ComboBox<String> searchField) {
         Animations.pulse(search).playFromStart();
 
