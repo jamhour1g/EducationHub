@@ -17,13 +17,13 @@ public enum ControllerResource {
     STUDENT_EXAMS("src\\main\\resources\\com\\jamhour\\educationhub\\student\\examsTab.fxml"),
     COURSES_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\student\\courseDialog.fxml"),
     ADMIN_HOME("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\admin-home.fxml"),
-    ADMIN_STUDENT_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student-actions.fxml"),
     ADMIN_TEACHER_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\teacher-actions.fxml"),
     ADMIN_COURSE_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\course-actions.fxml"),
-    ADMIN_ADD_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\addStudent-dialog.fxml"),
-    ADMIN_DELETE_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\deleteStudent-dialog.fxml"),
-    ADMIN_UPDATE_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\updateStudent-dialog.fxml"),
-    ADMIN_REGISTER_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\registerStudent-dialog.fxml");
+    ADMIN_STUDENT_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\student-actions.fxml"),
+    ADMIN_ADD_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\addStudent-dialog.fxml"),
+    ADMIN_DELETE_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\deleteStudent-dialog.fxml"),
+    ADMIN_UPDATE_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\updateStudent-dialog.fxml"),
+    ADMIN_REGISTER_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\registerStudent-dialog.fxml");
 
 
     private final FXMLLoader fxmlLoader = new FXMLLoader();
