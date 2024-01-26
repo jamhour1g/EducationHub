@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import atlantafx.base.controls.Message?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<DialogPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jamhour.educationhub.controllers.admin.teacher_actions.AddTeacherDialog">
+    <content>
+        <VBox spacing="5.0">
+            <children>
+                <Message fx:id="message" description="Please enter teacher information" minHeight="-Infinity"
+                         title="Teacher information"/>
+                <GridPane hgap="10.0" vgap="5.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <TextField fx:id="idTextField" GridPane.columnIndex="1"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" GridPane.rowIndex="1"/>
+                        <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" GridPane.rowIndex="2"/>
+                        <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email" GridPane.rowIndex="3"/>
+                        <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Experience" GridPane.rowIndex="4"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Salary" GridPane.rowIndex="5"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Major" GridPane.rowIndex="6"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth" GridPane.rowIndex="7"/>
+                        <TextField fx:id="experienceTextField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                        <TextField fx:id="salaryTextField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                        <TextField fx:id="majorTextField" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                        <DatePicker fx:id="dateOfBirthDatePicker" editable="false" GridPane.columnIndex="1"
+                                    GridPane.rowIndex="7"/>
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+    </content>
+</DialogPane>

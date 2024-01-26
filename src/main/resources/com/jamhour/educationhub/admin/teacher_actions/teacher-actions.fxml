@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import atlantafx.base.controls.Tile?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jamhour.educationhub.controllers.admin.teacher_actions.TeacherActions">
+    <top>
+        <ToolBar BorderPane.alignment="CENTER">
+            <items>
+                <Button fx:id="addTeacher" onAction="#addTeacher" mnemonicParsing="false" text="Add a teacher"/>
+                <Button fx:id="deleteTeacher" onAction="#deleteTeacher" mnemonicParsing="false"
+                        text="Delete a teacher"/>
+                <Button fx:id="updateTeacher" onAction="#updateTeacher" mnemonicParsing="false"
+                        text="Update teacher info"/>
+                <Button fx:id="viewCourses" onAction="#viewCourses" mnemonicParsing="false"
+                        text="View course that a specific teacher teaches"/>
+            </items>
+        </ToolBar>
+    </top>
+    <center>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <Tile fx:id="searchTile" description="Look for a teacher using id,name.phone.email "
+                      minHeight="-Infinity" title="Search"/>
+                <TableView fx:id="teacherTableView">
+                    <columns>
+                        <TableColumn fx:id="teacherIdColumn" text="ID"/>
+                        <TableColumn fx:id="teacherNameColumn" text="Name"/>
+                        <TableColumn fx:id="teacherPhoneColumn" text="Phone"/>
+                        <TableColumn fx:id="teacherEmailColumn" text="Email"/>
+                        <TableColumn fx:id="teacherMajorColumn" text="Major"/>
+                        <TableColumn fx:id="teacherExperienceColumn" text="Experience"/>
+                        <TableColumn fx:id="teacherDateOfBirthColumn" text="Date of birth"/>
+                        <TableColumn fx:id="teacherSalaryColumn" text="Salary"/>
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

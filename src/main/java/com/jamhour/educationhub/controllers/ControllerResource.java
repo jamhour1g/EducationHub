@@ -17,13 +17,17 @@ public enum ControllerResource {
     STUDENT_EXAMS("src\\main\\resources\\com\\jamhour\\educationhub\\student\\examsTab.fxml"),
     COURSES_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\student\\courseDialog.fxml"),
     ADMIN_HOME("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\admin-home.fxml"),
-    ADMIN_TEACHER_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\teacher-actions.fxml"),
+    ADMIN_TEACHER_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\teacher_actions\\teacher-actions.fxml"),
     ADMIN_COURSE_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\course-actions.fxml"),
     ADMIN_STUDENT_ACTIONS("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\student-actions.fxml"),
     ADMIN_ADD_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\addStudent-dialog.fxml"),
     ADMIN_DELETE_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\deleteStudent-dialog.fxml"),
     ADMIN_UPDATE_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\updateStudent-dialog.fxml"),
-    ADMIN_REGISTER_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\registerStudent-dialog.fxml");
+    ADMIN_REGISTER_STUDENT_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\student_actions\\registerStudent-dialog.fxml"),
+    ADMIN_ADD_TEACHER_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\teacher_actions\\addTeacher-dialog.fxml"),
+    ADMIN_DELETE_TEACHER_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\teacher_actions\\deleteTeacher-dialog.fxml"),
+    ADMIN_UPDATE_TEACHER_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\teacher_actions\\updateTeacher-dialog.fxml"),
+    ADMIN_VIEW_COURSES_FOR_TEACHER_DIALOG("src\\main\\resources\\com\\jamhour\\educationhub\\admin\\teacher_actions\\viewCoursesForTeacher-dialog.fxml");
 
 
     private final FXMLLoader fxmlLoader = new FXMLLoader();

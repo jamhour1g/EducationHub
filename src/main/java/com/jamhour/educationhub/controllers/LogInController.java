@@ -12,7 +12,7 @@ public class LogInController {
     private ComboBox<String> logInAs;
 
     public void initialize() {
-        logInAs.getItems().addAll("Student", "Teacher", "Admin");
+        logInAs.getItems().addAll("Student", "Admin");
         logInAs.getSelectionModel().selectFirst();
     }
 

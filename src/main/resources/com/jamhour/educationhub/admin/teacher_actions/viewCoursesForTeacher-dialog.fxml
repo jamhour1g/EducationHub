@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import atlantafx.base.controls.Message?>
+<?import atlantafx.base.controls.Tile?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<DialogPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jamhour.educationhub.controllers.admin.teacher_actions.ViewCoursesForTeacherDialog">
+    <content>
+        <VBox spacing="5.0">
+            <children>
+                <Message fx:id="errorMessage" description="Please enter a valid ID." minHeight="-Infinity"
+                         title="No results found." visible="false"/>
+                <Tile fx:id="teacherIdTile"
+                      description="Please enter teacher id to look for the teacher you want to update"
+                      minHeight="-Infinity" title="Teacher ID"/>
+                <VBox fx:id="coursesVBox" spacing="5.0" visible="false">
+                    <children>
+                        <Message fx:id="teacherInfoMessage"
+                                 description="Here's a list of the available course this teacher teaches"
+                                 minHeight="-Infinity" title="Courses"/>
+                        <TableView fx:id="courseTableView">
+                            <columns>
+                                <TableColumn fx:id="courseIdColumn"
+                                             text="Course ID"/>
+                                <TableColumn fx:id="courseNameColumn"
+                                             text="Course name"/>
+                                <TableColumn fx:id="numberOfStudentColumn"
+                                             text="Number of students"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                    <padding>
+                        <Insets topRightBottomLeft="10"/>
+                    </padding>
+                </VBox>
+            </children>
+            <padding>
+                <Insets topRightBottomLeft="10"/>
+            </padding>
+        </VBox>
+    </content>
+
+    <ButtonType fx:constant="CANCEL"/>
+
+</DialogPane>
