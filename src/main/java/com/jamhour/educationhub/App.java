@@ -45,7 +45,7 @@ public final class App extends Application implements AutoCloseable {
         this.stage = stage;
         app.stage = stage;
 
-        setTheme(Themes.DRACULA.getTheme());
+        setTheme(Themes.PRIMER_LIGHT.getTheme());
         setSceneAndShow(ControllerResource.LOGIN.getContent(), ControllerResource.LOGIN.isResizable());
     }
 
