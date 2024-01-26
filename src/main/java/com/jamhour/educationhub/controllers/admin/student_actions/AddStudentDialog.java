@@ -81,6 +81,12 @@ public class AddStudentDialog {
                 id
         );
         Queries.insertIntoTable(Schema.Tables.STUDENT, student);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText("Student added successfully.");
+        alert.showAndWait();
     }
 
     private void showErrorOnInvalidSearchInput(String title, String description) {

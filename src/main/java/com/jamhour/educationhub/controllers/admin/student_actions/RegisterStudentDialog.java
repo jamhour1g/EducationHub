@@ -25,6 +25,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
@@ -182,7 +183,7 @@ public class RegisterStudentDialog {
         Animations.pulse(registerStudentButton).playFromStart();
         courseTableView.getItems()
                 .stream()
-                .filter(CourseTableEntry::isRegisteredValue)
+                .filter(CourseTableEntry::isRegistered)
                 .forEach(courseTableEntry ->
                         Queries.insertIntoTable(
                                 Schema.Tables.ENROLLMENT,
@@ -254,9 +255,23 @@ public class RegisterStudentDialog {
             return id.get();
         }
 
-        public boolean isRegisteredValue() {
+        public boolean isRegistered() {
             return registered.get();
         }
 
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof CourseTableEntry that)) return false;
+            return Objects.equals(getNameValue(), that.getNameValue()) &&
+                   Objects.equals(getTeacherNameValue(), that.getTeacherNameValue()) &&
+                   Objects.equals(getIdValue(), that.getIdValue()) &&
+                   Objects.equals(isRegistered(), that.isRegistered());
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(getNameValue(), getTeacherNameValue(), getIdValue(), isRegistered());
+        }
     }
 }

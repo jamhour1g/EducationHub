@@ -53,7 +53,25 @@ public class DeleteTeacherDialog {
             showErrorOnInvalidInput("Enter a value.", "Please enter the id you want to delete");
             return;
         }
-        Queries.deleteFromTableUsing(Schema.Tables.TEACHER, Teacher.Column.ID, parsedId);
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Delete");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to delete this course?");
+        alert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == ButtonType.OK) {
+                Queries.deleteFromTableUsing(Schema.Tables.TEACHER, Teacher.Column.ID, parsedId);
+
+                Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                alert2.setTitle("Success");
+                alert2.setHeaderText(null);
+                alert2.setContentText("Course deleted successfully.");
+                alert2.showAndWait();
+            } else {
+                alert.close();
+            }
+        });
+
     }
 
     private void showErrorOnInvalidInput(String title, String description) {

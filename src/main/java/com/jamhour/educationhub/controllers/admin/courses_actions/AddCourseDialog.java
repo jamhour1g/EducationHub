@@ -85,6 +85,12 @@ public class AddCourseDialog {
         Course course = new Course(nameTextField.getText(), id, teacherId);
 
         Queries.insertIntoTable(Schema.Tables.COURSE, course);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Course Added");
+        alert.setHeaderText(null);
+        alert.setContentText("Course added successfully.");
+        alert.showAndWait();
     }
 
 
