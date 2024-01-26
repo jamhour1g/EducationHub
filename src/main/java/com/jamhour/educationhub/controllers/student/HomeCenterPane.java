@@ -8,16 +8,15 @@ import com.jamhour.data.*;
 import com.jamhour.database.Schema;
 import com.jamhour.database.queries.Queries;
 import com.jamhour.educationhub.App;
-import com.jamhour.educationhub.Themes;
 import com.jamhour.educationhub.controllers.ControllerResource;
-import javafx.collections.FXCollections;
+import com.jamhour.educationhub.controllers.SettingsDialog;
 import javafx.fxml.FXML;
-import javafx.geometry.Orientation;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -187,37 +186,9 @@ public class HomeCenterPane {
     }
 
     @FXML
-    private void openSettings() {
+    public void openSettings() {
         Animations.pulse(settings).playFromStart();
-
-        Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.setTitle("Settings");
-        dialog.initOwner(App.getInstance().getWindow());
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
-
-        Tile themeSctionTile = new Tile("Theme", "Select a theme from the app");
-        ComboBox<Themes> themeComboBox = new ComboBox<>(
-                FXCollections.observableArrayList(
-                        Themes.values()
-                )
-        );
-
-        themeSctionTile.setAction(themeComboBox);
-        themeComboBox.setOnAction(_ -> {
-            if (themeComboBox.getSelectionModel().getSelectedItem() != null) {
-                App.setTheme(themeComboBox.getSelectionModel().getSelectedItem().getTheme());
-            }
-        });
-
-
-        dialog.getDialogPane().setContent(
-                new VBox(
-                        new Separator(Orientation.HORIZONTAL),
-                        themeSctionTile,
-                        new Separator(Orientation.HORIZONTAL)
-                )
-        );
-        dialog.showAndWait().ifPresent(_ -> dialog.close());
+        SettingsDialog.showSettingsDialog(settings.getScene().getWindow());
     }
 
     public static HomeCenterPane getInstance() {

@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane fx:controller="com.jamhour.educationhub.controllers.admin.AdminHomeScreen"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jamhour.educationhub.controllers.admin.AdminHomeScreen">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" onShowing="#onStudentActionMenuClick" text="Student Actions">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onAddStudentMenuItemClick" text="Add Student"/>
+                        <MenuItem mnemonicParsing="false" onAction="#onDeleteStudentMenuItemClick"
+                                  text="Delete Student"/>
+                        <MenuItem mnemonicParsing="false" onAction="#onUpdateStudentMenuItemClick"
+                                  text="Update Student"/>
+                        <MenuItem mnemonicParsing="false" onAction="#onRegisterStudentMenuItemClick"
+                                  text="Register Student"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" onShowing="#onTeacherActionMenuClick" text="Teacher Actions">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onAddTeacherMenuItemClick" text="Add Teacher"/>
+                        <MenuItem mnemonicParsing="false" onAction="#onDeleteTeacherMenuItemClick"
+                                  text="Delete Teacher"/>
+                        <MenuItem mnemonicParsing="false" onAction="#onUpdateTeacherMenuItemClick"
+                                  text="Update Teacher"/>
+                        <MenuItem mnemonicParsing="false" onAction="#onViewCoursesMenuItemClick"
+                                  text="View Course for teacher"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" onShowing="#onCoursesActionMenuClick" text="Courses Actions">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onAddCourseMenuItemClick" text="Add Course"/>
+                        <MenuItem mnemonicParsing="false" onAction="#onDeleteCourseMenuItemClick" text="Delete Course"/>
+                        <MenuItem mnemonicParsing="false" onAction="#onUpdateCourseMenuItemClick" text="Update Course"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Settings">
+                    <items>
+                        <MenuItem onAction="#onSettingsActionMenuClick" mnemonicParsing="false" text="Theme"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
     <center>
-        <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-            <tabs>
-                <Tab fx:id="studentActionsTab" closable="false" text="Student Actions"/>
-                <Tab fx:id="teacherActionsTab" closable="false" text="Teacher Actions"/>
-                <Tab fx:id="courseActionsTab" closable="false" text="Courses Actions"/>
-            </tabs>
-        </TabPane>
+        <BorderPane fx:id="contentBorderPane" BorderPane.alignment="CENTER"/>
     </center>
 </BorderPane>
