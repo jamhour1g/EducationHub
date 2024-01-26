@@ -2,17 +2,9 @@ package com.jamhour.educationhub.controllers.admin;
 
 import com.jamhour.educationhub.controllers.ControllerResource;
 import com.jamhour.educationhub.controllers.SettingsDialog;
-import com.jamhour.educationhub.controllers.admin.courses_actions.AddCourseDialog;
-import com.jamhour.educationhub.controllers.admin.courses_actions.DeleteCourseDialog;
-import com.jamhour.educationhub.controllers.admin.courses_actions.UpdateCourse;
-import com.jamhour.educationhub.controllers.admin.student_actions.AddStudentDialog;
-import com.jamhour.educationhub.controllers.admin.student_actions.DeleteStudentDialog;
-import com.jamhour.educationhub.controllers.admin.student_actions.RegisterStudentDialog;
-import com.jamhour.educationhub.controllers.admin.student_actions.UpdateStudent;
-import com.jamhour.educationhub.controllers.admin.teacher_actions.AddTeacherDialog;
-import com.jamhour.educationhub.controllers.admin.teacher_actions.DeleteTeacherDialog;
-import com.jamhour.educationhub.controllers.admin.teacher_actions.UpdateTeacher;
-import com.jamhour.educationhub.controllers.admin.teacher_actions.ViewCoursesForTeacherDialog;
+import com.jamhour.educationhub.controllers.admin.courses_actions.CoursesActions;
+import com.jamhour.educationhub.controllers.admin.student_actions.StudentActions;
+import com.jamhour.educationhub.controllers.admin.teacher_actions.TeacherActions;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 
@@ -47,57 +39,57 @@ public class AdminHomeScreen {
 
     @FXML
     public void onAddStudentMenuItemClick() {
-        AddStudentDialog.showAddStudentDialog(contentBorderPane.getScene().getWindow());
+        StudentActions.getInstance().addStudent();
     }
 
     @FXML
     public void onDeleteStudentMenuItemClick() {
-        DeleteStudentDialog.showDeleteStudentDialog(contentBorderPane.getScene().getWindow());
+        StudentActions.getInstance().deleteStudent();
     }
 
     @FXML
     public void onUpdateStudentMenuItemClick() {
-        UpdateStudent.updateStudentInfoInDatabase(contentBorderPane.getScene().getWindow());
+        StudentActions.getInstance().updateStudent();
     }
 
     @FXML
     public void onRegisterStudentMenuItemClick() {
-        RegisterStudentDialog.showRegisterStudentDialog(contentBorderPane.getScene().getWindow());
+        StudentActions.getInstance().registerStudent();
     }
 
     @FXML
     public void onAddTeacherMenuItemClick() {
-        AddTeacherDialog.showAddTeacherDialog(contentBorderPane.getScene().getWindow());
+        TeacherActions.getInstance().addTeacher();
     }
 
     @FXML
     public void onDeleteTeacherMenuItemClick() {
-        DeleteTeacherDialog.showDeleteTeacherDialog(contentBorderPane.getScene().getWindow());
+        TeacherActions.getInstance().deleteTeacher();
     }
 
     @FXML
     public void onUpdateTeacherMenuItemClick() {
-        UpdateTeacher.updateTeacherInfoInDatabase(contentBorderPane.getScene().getWindow());
+        TeacherActions.getInstance().updateTeacher();
     }
 
     @FXML
     public void onViewCoursesMenuItemClick() {
-        ViewCoursesForTeacherDialog.showCoursesForTeacherDialog(contentBorderPane.getScene().getWindow());
+        TeacherActions.getInstance().viewCourses();
     }
 
     @FXML
     public void onAddCourseMenuItemClick() {
-        AddCourseDialog.showAddCourseDialog(contentBorderPane.getScene().getWindow());
+        CoursesActions.getInstance().addCourse();
     }
 
     @FXML
     public void onDeleteCourseMenuItemClick() {
-        DeleteCourseDialog.showDeleteCourseDialog(contentBorderPane.getScene().getWindow());
+        CoursesActions.getInstance().deleteCourse();
     }
 
     @FXML
     public void onUpdateCourseMenuItemClick() {
-        UpdateCourse.updateCourseInfoInDatabase(contentBorderPane.getScene().getWindow());
+        CoursesActions.getInstance().updateCourse();
     }
 
 }

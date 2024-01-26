@@ -12,6 +12,7 @@ import com.jamhour.data.Exam;
 import com.jamhour.data.Teacher;
 import com.jamhour.database.Schema;
 import com.jamhour.database.queries.Queries;
+import com.jamhour.educationhub.controllers.ControllerResource;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -65,6 +66,11 @@ public class CoursesActions {
 
         courseTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
+        refreshTableContents();
+    }
+
+    private void refreshTableContents() {
+        courseTableView.getItems().clear();
         Queries.<Course>getAllInTable(Schema.Tables.COURSE)
                 .forEach(course -> courseTableView.getItems().add(new CourseTableEntry(course)));
     }
@@ -100,12 +106,14 @@ public class CoursesActions {
     public void addCourse() {
         Animations.pulse(addCourseButton).playFromStart();
         AddCourseDialog.showAddCourseDialog(addCourseButton.getScene().getWindow());
+        refreshTableContents();
     }
 
     @FXML
     public void deleteCourse() {
         Animations.pulse(deleteCourseButton).playFromStart();
         DeleteCourseDialog.showDeleteCourseDialog(deleteCourseButton.getScene().getWindow());
+        refreshTableContents();
     }
 
     @FXML
@@ -113,6 +121,7 @@ public class CoursesActions {
         Animations.pulse(updateCourseButton).playFromStart();
         // TODO : update the table view to adjust to the new course updates in DB
         UpdateCourse.updateCourseInfoInDatabase(updateCourseButton.getScene().getWindow());
+        refreshTableContents();
     }
 
     private void handleSearch(Button search, TextField textField, ComboBox<String> searchField) {
@@ -198,6 +207,10 @@ public class CoursesActions {
         Animations.flash(textField).playFromStart();
     }
 
+    public static CoursesActions getInstance() {
+        return ControllerResource.ADMIN_COURSE_ACTIONS.getController();
+    }
+
     @Getter
     public static class CourseTableEntry {
 
@@ -262,4 +275,5 @@ public class CoursesActions {
         }
 
     }
+
 }

@@ -9,6 +9,7 @@ import atlantafx.base.util.Animations;
 import com.jamhour.data.Student;
 import com.jamhour.database.Schema;
 import com.jamhour.database.queries.Queries;
+import com.jamhour.educationhub.controllers.ControllerResource;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -53,6 +54,11 @@ public class StudentActions {
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
+        refreshTableContents();
+    }
+
+    private void refreshTableContents() {
+        tableView.getItems().clear();
         Queries.<Student>getAllInTable(Schema.Tables.STUDENT)
                 .forEach(student -> tableView.getItems().add(new StudentTableEntry(student)));
     }
@@ -89,12 +95,14 @@ public class StudentActions {
     public void addStudent() {
         Animations.pulse(addStudent).playFromStart();
         AddStudentDialog.showAddStudentDialog(addStudent.getScene().getWindow());
+        refreshTableContents();
     }
 
     @FXML
     public void deleteStudent() {
         Animations.pulse(deleteStudent).playFromStart();
         DeleteStudentDialog.showDeleteStudentDialog(deleteStudent.getScene().getWindow());
+        refreshTableContents();
     }
 
     @FXML
@@ -102,6 +110,7 @@ public class StudentActions {
         Animations.pulse(updateStudent).playFromStart();
         // TODO : update the table view to adjust to the new student updates in DB
         UpdateStudent.updateStudentInfoInDatabase(updateStudent.getScene().getWindow());
+        refreshTableContents();
     }
 
     @FXML
@@ -172,6 +181,10 @@ public class StudentActions {
 
         textField.pseudoClassStateChanged(Styles.STATE_DANGER, true);
         Animations.flash(textField).playFromStart();
+    }
+
+    public static StudentActions getInstance() {
+        return ControllerResource.ADMIN_STUDENT_ACTIONS.getController();
     }
 
     @Data

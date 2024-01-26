@@ -9,6 +9,7 @@ import atlantafx.base.util.Animations;
 import com.jamhour.data.Teacher;
 import com.jamhour.database.Schema;
 import com.jamhour.database.queries.Queries;
+import com.jamhour.educationhub.controllers.ControllerResource;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -68,6 +69,11 @@ public class TeacherActions {
         teacherSalaryColumn.setCellValueFactory(new PropertyValueFactory<>("salary"));
         teacherTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
+        refreshTableContents();
+    }
+
+    private void refreshTableContents() {
+        teacherTableView.getItems().clear();
         Queries.<Teacher>getAllInTable(Schema.Tables.TEACHER)
                 .forEach(teacher -> teacherTableView.getItems().add(new TeacherTableEntry(teacher)));
     }
@@ -104,12 +110,14 @@ public class TeacherActions {
     public void addTeacher() {
         Animations.pulse(addTeacher).playFromStart();
         AddTeacherDialog.showAddTeacherDialog(addTeacher.getScene().getWindow());
+        refreshTableContents();
     }
 
     @FXML
     public void deleteTeacher() {
         Animations.pulse(deleteTeacher).playFromStart();
         DeleteTeacherDialog.showDeleteTeacherDialog(deleteTeacher.getScene().getWindow());
+        refreshTableContents();
     }
 
     @FXML
@@ -117,6 +125,7 @@ public class TeacherActions {
         Animations.pulse(updateTeacher).playFromStart();
         // TODO : update the table view to adjust to the new teacher updates in DB
         UpdateTeacher.updateTeacherInfoInDatabase(updateTeacher.getScene().getWindow());
+        refreshTableContents();
     }
 
     @FXML
@@ -187,6 +196,11 @@ public class TeacherActions {
 
         textField.pseudoClassStateChanged(Styles.STATE_DANGER, true);
         Animations.flash(textField).playFromStart();
+    }
+
+
+    public static TeacherActions getInstance() {
+        return ControllerResource.ADMIN_TEACHER_ACTIONS.getController();
     }
 
     @Data
