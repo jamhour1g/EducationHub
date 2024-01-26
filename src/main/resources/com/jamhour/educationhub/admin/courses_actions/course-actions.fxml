@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import atlantafx.base.controls.Tile?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jamhour.educationhub.controllers.admin.courses_actions.CoursesActions">
+    <top>
+        <ToolBar BorderPane.alignment="CENTER">
+            <items>
+                <Button fx:id="addCourseButton" onAction="#addCourse" mnemonicParsing="false" text="Add a course"/>
+                <Button fx:id="deleteCourseButton" onAction="#deleteCourse" mnemonicParsing="false"
+                        text="Delete a course"/>
+                <Button fx:id="updateCourseButton" onAction="#updateCourse" mnemonicParsing="false"
+                        text="Update course info"/>
+            </items>
+        </ToolBar>
+    </top>
+    <center>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <Tile fx:id="searchTile" description="Look for a course using it's id,name or teacher id"
+                      minHeight="-Infinity" title="Search"/>
+                <TableView fx:id="courseTableView">
+                    <columns>
+                        <TableColumn fx:id="courseIdColumn" minWidth="200.0"
+                                     text="ID"/>
+                        <TableColumn fx:id="courseNameColumn" minWidth="200.0"
+                                     text="Name"/>
+                        <TableColumn fx:id="teacherIdColumn" minWidth="200.0"
+                                     text="Teacher ID"/>
+                        <TableColumn fx:id="teacherNameColumn" minWidth="200.0"
+                                     text="Teacher name"/>
+                        <TableColumn fx:id="numberOfEnrollmentsColumn" minWidth="200.0"
+                                     text="Number of enrolled students"/>
+                        <TableColumn fx:id="numberOfExamsColumn" minWidth="200.0"
+                                     text="Number of exams taken"/>
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

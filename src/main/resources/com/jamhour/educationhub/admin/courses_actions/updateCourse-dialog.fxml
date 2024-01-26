@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import atlantafx.base.controls.Message?>
+<?import atlantafx.base.controls.Tile?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<DialogPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jamhour.educationhub.controllers.admin.courses_actions.UpdateCourse">
+    <content>
+        <VBox spacing="5.0">
+            <children>
+                <Message fx:id="errorMessage" description="Please enter a valid ID." minHeight="-Infinity"
+                         title="No results found." visible="false"/>
+                <Tile fx:id="courseIdTile"
+                      description="Please enter the course id to look for the course you want to update"
+                      minHeight="-Infinity" title="Course ID"/>
+                <VBox fx:id="courseInfoVBox" spacing="5.0" visible="false">
+                    <children>
+                        <Message fx:id="courseInfoMessage"
+                                 description="Here's the course information, press update when your done editing"
+                                 minHeight="-Infinity" title="Course information"/>
+                        <GridPane hgap="10.0" vgap="5.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints vgrow="SOMETIMES"/>
+                                <RowConstraints vgrow="SOMETIMES"/>
+                                <RowConstraints vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <children>
+                                <TextField fx:id="courseIdTextFieldInUpdate" disable="true" GridPane.columnIndex="1"/>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID"/>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" GridPane.rowIndex="1"/>
+                                <TextField fx:id="courseNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teacher ID" GridPane.rowIndex="2"/>
+                                <TextField fx:id="teacherIdTextField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                            </children>
+                        </GridPane>
+                        <HBox alignment="BOTTOM_RIGHT">
+                            <children>
+                                <Button fx:id="updateCourseButton" alignment="BOTTOM_RIGHT" defaultButton="true"
+                                        mnemonicParsing="false" text="Update"/>
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets topRightBottomLeft="10"/>
+                    </padding>
+                </VBox>
+            </children>
+            <padding>
+                <Insets topRightBottomLeft="10"/>
+            </padding>
+        </VBox>
+    </content>
+
+    <ButtonType fx:constant="CANCEL"/>
+
+</DialogPane>

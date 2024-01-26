@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import atlantafx.base.controls.Message?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<DialogPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jamhour.educationhub.controllers.admin.courses_actions.AddCourseDialog">
+    <content>
+        <VBox spacing="5.0">
+            <children>
+                <Message fx:id="message" description="Please enter course information" minHeight="-Infinity"
+                         title="Course information"/>
+                <GridPane hgap="10.0" vgap="5.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <TextField fx:id="nameTextField" GridPane.columnIndex="1"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID" GridPane.rowIndex="1"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teacher ID" GridPane.rowIndex="2"/>
+                        <TextField fx:id="idTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <TextField fx:id="teacherIdTextField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+    </content>
+</DialogPane>
