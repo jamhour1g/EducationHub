@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Window;
 
+import java.util.Optional;
+
 public class DeleteStudentDialog {
 
     @FXML
@@ -41,6 +43,12 @@ public class DeleteStudentDialog {
     }
 
     private void deleteStudent() {
+
+        if (studentId.getText() == null || studentId.getText().isBlank()) {
+            showErrorOnInvalidInput("Enter a value.", "Please enter the id you want to delete");
+            return;
+        }
+
         int parsedId;
         try {
             parsedId = Integer.parseInt(studentId.getText());
@@ -49,10 +57,17 @@ public class DeleteStudentDialog {
             return;
         }
 
-        if (studentId.getText() == null || studentId.getText().isBlank()) {
-            showErrorOnInvalidInput("Enter a value.", "Please enter the id you want to delete");
+        Optional<Student> studentInDb = Queries.getFromTableUsing(
+                Schema.Tables.STUDENT,
+                Student.Column.ID,
+                parsedId
+        );
+
+        if (studentInDb.isEmpty()) {
+            showErrorOnInvalidInput("Student not found.", STR."Student with ID \{parsedId} not found.");
             return;
         }
+        
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirm Delete");
         alert.setHeaderText(null);

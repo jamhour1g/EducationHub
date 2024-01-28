@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Window;
 
+import java.util.Optional;
+
 public class DeleteTeacherDialog {
 
     @FXML
@@ -41,6 +43,12 @@ public class DeleteTeacherDialog {
     }
 
     private void deleteTeacher() {
+
+        if (teacherId.getText() == null || teacherId.getText().isBlank()) {
+            showErrorOnInvalidInput("Enter a value.", "Please enter the id you want to delete");
+            return;
+        }
+
         int parsedId;
         try {
             parsedId = Integer.parseInt(teacherId.getText());
@@ -49,8 +57,14 @@ public class DeleteTeacherDialog {
             return;
         }
 
-        if (teacherId.getText() == null || teacherId.getText().isBlank()) {
-            showErrorOnInvalidInput("Enter a value.", "Please enter the id you want to delete");
+        Optional<Teacher> teacherInDb = Queries.getFromTableUsing(
+                Schema.Tables.TEACHER,
+                Teacher.Column.ID,
+                parsedId
+        );
+
+        if (teacherInDb.isEmpty()) {
+            showErrorOnInvalidInput("Teacher not found.", STR."Teacher with ID \{parsedId} not found.");
             return;
         }
 
@@ -60,7 +74,11 @@ public class DeleteTeacherDialog {
         alert.setContentText("Are you sure you want to delete this course?");
         alert.showAndWait().ifPresent(buttonType -> {
             if (buttonType == ButtonType.OK) {
-                Queries.deleteFromTableUsing(Schema.Tables.TEACHER, Teacher.Column.ID, parsedId);
+                Queries.deleteFromTableUsing(
+                        Schema.Tables.TEACHER,
+                        Teacher.Column.ID,
+                        parsedId
+                );
 
                 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
                 alert2.setTitle("Success");
