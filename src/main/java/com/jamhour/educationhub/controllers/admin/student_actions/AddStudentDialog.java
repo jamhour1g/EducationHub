@@ -76,11 +76,11 @@ public class AddStudentDialog {
 
         Student student = new Student(
                 nameTextField.getText(),
-                phoneTextField.getText(),
                 emailTextField.getText(),
+                phoneTextField.getText(),
                 id
         );
-        Queries.insertIntoTable(Schema.Tables.STUDENT, student);
+        System.out.println(Queries.insertIntoTable(Schema.Tables.STUDENT, student));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
