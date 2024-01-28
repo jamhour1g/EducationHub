@@ -58,29 +58,6 @@ public class AddTeacherDialog {
     }
 
     private void addTeacher() {
-        int id;
-        try {
-            id = Integer.parseInt(idTextField.getText());
-        } catch (NumberFormatException e) {
-            showErrorOnInvalidSearchInput("Invalid ID.", "Please enter a valid ID.");
-            return;
-        }
-
-        int experience;
-        try {
-            experience = Integer.parseInt(experienceTextField.getText());
-        } catch (NumberFormatException e) {
-            showErrorOnInvalidSearchInput("Invalid experience.", "Please enter a valid experience.");
-            return;
-        }
-
-        double salary;
-        try {
-            salary = Double.parseDouble(salaryTextField.getText());
-        } catch (NumberFormatException e) {
-            showErrorOnInvalidSearchInput("Invalid salary.", "Please enter a valid salary.");
-            return;
-        }
 
         if (nameTextField.getText() == null || nameTextField.getText().isBlank()) {
             showErrorOnInvalidSearchInput("Invalid name.", "Please enter a valid name.");
@@ -110,8 +87,37 @@ public class AddTeacherDialog {
             return;
         }
 
+        if (idTextField.getText() == null || idTextField.getText().isBlank()) {
+            showErrorOnInvalidSearchInput("Invalid ID.", "Please enter a valid ID.");
+            return;
+        }
+
         if (dateOfBirthDatePicker.getValue() == null) {
             showErrorOnInvalidSearchInput("Invalid date of birth.", "Please enter a valid date of birth.");
+            return;
+        }
+
+        int id;
+        try {
+            id = Integer.parseInt(idTextField.getText());
+        } catch (NumberFormatException e) {
+            showErrorOnInvalidSearchInput("Invalid ID.", "Please enter a valid ID.");
+            return;
+        }
+
+        int experience;
+        try {
+            experience = Integer.parseInt(experienceTextField.getText());
+        } catch (NumberFormatException e) {
+            showErrorOnInvalidSearchInput("Invalid experience.", "Please enter a valid experience.");
+            return;
+        }
+
+        double salary;
+        try {
+            salary = Double.parseDouble(salaryTextField.getText());
+        } catch (NumberFormatException e) {
+            showErrorOnInvalidSearchInput("Invalid salary.", "Please enter a valid salary.");
             return;
         }
 
@@ -126,7 +132,10 @@ public class AddTeacherDialog {
                 id
         );
 
-        Queries.insertIntoTable(Schema.Tables.TEACHER, teacher);
+        if (Queries.insertIntoTable(Schema.Tables.TEACHER, teacher) == 0) {
+            showErrorOnInvalidSearchInput("Teacher not added", "Teacher was not added. Please try again.");
+            return;
+        }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");

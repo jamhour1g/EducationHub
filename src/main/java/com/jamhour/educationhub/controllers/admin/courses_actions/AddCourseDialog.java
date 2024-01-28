@@ -79,12 +79,15 @@ public class AddCourseDialog {
         try {
             teacherId = Integer.parseInt(teacherIdTextField.getText());
         } catch (NumberFormatException e) {
-            showErrorOnInvalidSearchInput("Invalid experience.", "Please enter a valid experience.");
+            showErrorOnInvalidSearchInput("Invalid teacher ID.", "Please enter a valid teacher ID.");
             return;
         }
         Course course = new Course(nameTextField.getText(), id, teacherId);
 
-        Queries.insertIntoTable(Schema.Tables.COURSE, course);
+        if (Queries.insertIntoTable(Schema.Tables.COURSE, course) == 0) {
+            showErrorOnInvalidSearchInput("Course not added", "Course was not added. Please try again.");
+            return;
+        }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Course Added");

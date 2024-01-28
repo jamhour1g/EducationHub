@@ -80,7 +80,11 @@ public class AddStudentDialog {
                 phoneTextField.getText(),
                 id
         );
-        Queries.insertIntoTable(Schema.Tables.STUDENT, student);
+
+        if (Queries.insertIntoTable(Schema.Tables.STUDENT, student) == 0) {
+            showErrorOnInvalidSearchInput("Failed to add student.", "Please try again.");
+            return;
+        }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
