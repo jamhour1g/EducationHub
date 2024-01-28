@@ -80,7 +80,7 @@ public class AddStudentDialog {
                 phoneTextField.getText(),
                 id
         );
-        System.out.println(Queries.insertIntoTable(Schema.Tables.STUDENT, student));
+        Queries.insertIntoTable(Schema.Tables.STUDENT, student);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
